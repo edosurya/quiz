@@ -15,10 +15,9 @@ class HomeController extends Controller
             })
             ->get();
 
-        $public_quizzes = $query->where('public', 1);
-        $registered_only_quizzes = $query->where('public', 0);
+        $quizzes = $query;
 
-        return view('home', compact('public_quizzes', 'registered_only_quizzes'));
+        return view('home', compact('quizzes'));
     }
 
     public function show(Quiz $quiz)

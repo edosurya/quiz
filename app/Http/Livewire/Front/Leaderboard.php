@@ -7,6 +7,7 @@ use App\Models\Test;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Collection;
 use Livewire\Component;
+use DB;
 
 class Leaderboard extends Component
 {
@@ -24,17 +25,17 @@ class Leaderboard extends Component
 
         $tests = Test::query()
             ->whereHas('user')
-            ->with(['user' => function ($query) {
-                $query->select('id', 'name');
-            }, 'quiz' => function ($query) {
-                $query->select('id', 'title');
-                $query->withCount('questions');
-            }])
+            ->with([
+                'user' => function ($query) 
+                {
+                    $query->select('id', 'name');
+                }])
             ->when($this->quiz_id > 0, function ($query) {
                 $query->where('quiz_id', $this->quiz_id);
             })
-            ->orderBy('result', 'desc')
-            ->orderBy('time_spent')
+            ->select('user_id', DB::raw('SUM(result) AS result'))
+            ->groupBy('user_id')
+            ->orderBy('result','DESC')
             ->get();
 
         return view('livewire.front.leaderboard', compact('tests'));

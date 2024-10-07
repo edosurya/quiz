@@ -56,6 +56,13 @@
                         </div>
 
                         <div class="mt-4">
+                            <x-input-label for="title" value="Total Questions" />
+                            <x-text-input wire:model="quiz.total_question" id="total_question" class="block mt-1 w-full" type="number"
+                                name="total_question" required />
+                            <x-input-error :messages="$errors->get('quiz.total_question')" class="mt-2" />
+                        </div>
+
+                        <div class="mt-4">
                             <div class="flex items-center">
                                 <x-input-label for="published" value="Published" />
                                 <input type="checkbox" id="published" class="mr-1 ml-2" wire:model="quiz.published">

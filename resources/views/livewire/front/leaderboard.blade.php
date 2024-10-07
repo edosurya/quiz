@@ -26,12 +26,7 @@
                                 </th>
                                 <th class="bg-gray-50 px-6 py-3 text-left">
                                     <span
-                                        class="text-xs font-medium uppercase leading-4 tracking-wider text-gray-500">Quiz</span>
-                                </th>
-                                <th class="bg-gray-50 px-6 py-3 text-left">
-                                    <span
-                                        class="text-xs font-medium uppercase leading-4 tracking-wider text-gray-500">Correct
-                                        answers</span>
+                                        class="text-xs font-medium uppercase leading-4 tracking-wider text-gray-500">Score</span>
                                 </th>
                             </tr>
                         </thead>
@@ -47,14 +42,7 @@
                                         {{ $test->user->name }}
                                     </td>
                                     <td class="px-6 py-4 text-sm leading-5 text-gray-900 whitespace-no-wrap">
-                                        {{ $test->quiz->title }}
-                                    </td>
-                                    <td class="px-6 py-4 text-sm leading-5 text-gray-900 whitespace-no-wrap">
-                                        {{ $test->result }} /
-                                        {{ $test->quiz->questions_count }}
-                                        (time:
-                                        {{ sprintf('%.2f', $test->time_spent / 60) }}
-                                        minutes)
+                                        {{ $test->result }}
                                     </td>
                                 </tr>
                             @empty

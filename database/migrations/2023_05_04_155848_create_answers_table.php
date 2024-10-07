@@ -18,6 +18,8 @@ return new class extends Migration
             $table->foreignId('test_id')->nullable()->constrained();
             $table->foreignId('question_id')->nullable()->constrained();
             $table->foreignId('option_id')->nullable()->constrained();
+            $table->integer('time_spent')->nullable();
+            $table->integer('score')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -18,6 +18,8 @@ return new class extends Migration
             $table->longText('description')->nullable();
             $table->boolean('published')->default(0);
             $table->boolean('public')->default(0);
+            $table->integer('time_for_answer')->nullable();
+            $table->integer('total_question')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

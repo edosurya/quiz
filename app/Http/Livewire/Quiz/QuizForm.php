@@ -27,6 +27,7 @@ class QuizForm extends Component
         'quiz.public' => 'boolean',
         'quiz.published' => 'boolean',
         'questions' => 'nullable|array',
+        'quiz.total_question' => 'required|integer',
     ];
 
     public function mount(Quiz $quiz)

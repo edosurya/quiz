@@ -37,6 +37,7 @@ class Show extends Component
             ->inRandomOrder()
             ->whereRelation('quizzes', 'id', $this->quiz->id)
             ->with('options')
+            ->take($this->quiz->total_question)
             ->get();
 
         $this->currentQuestion = $this->questions[$this->currentQuestionIndex];
@@ -78,8 +79,8 @@ class Show extends Component
 
         foreach ($this->answersOfQuestions as $key => $optionId) {
             if (!empty($optionId) && Option::find($optionId)->correct) {
-                $result++;
                 $time_spent = $this->time_for_answer - $this->time_answer[$key+1];
+                $result = $result + $this->calcScore($time_spent);
                 Answer::create([
                     'user_id' => auth()->id(),
                     'test_id' => $test->id,

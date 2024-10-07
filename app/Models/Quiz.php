@@ -17,6 +17,7 @@ class Quiz extends Model
         'published',
         'public',
         'time_for_answer',
+        'total_question',
     ];
 
     protected $casts = [
