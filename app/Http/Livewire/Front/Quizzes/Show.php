@@ -116,22 +116,22 @@ class Show extends Component
     public function calcScore($time_spent){
         switch (true) {
             case ($time_spent <= 5):
-                return 5;
+                return 5+5;
                 break;
             case ($time_spent == 6):
-                return 4;
+                return 5+4;
                 break;
             case ($time_spent == 7):
-                return 3;
+                return 5+3;
                 break;
             case ($time_spent == 8):
-                return 2;
+                return 5+2;
                 break;
             case ($time_spent == 9):
-                return 1;
+                return 5+1;
                 break;
             default:
-                return 0;
+                return 5+0;
                 break;
         }
     }
